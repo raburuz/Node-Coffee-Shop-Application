@@ -8,6 +8,13 @@ const validateLogin = [
       validateRequest,
 ];
 
+const validateGoogleLogin = [
+      check('id_token', 'Id_token is required').not().isEmpty(),
+
+      validateRequest,
+];
+
 module.exports = {
       validateLogin,
+      validateGoogleLogin,
 };
