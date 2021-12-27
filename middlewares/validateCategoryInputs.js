@@ -6,6 +6,7 @@ const {
       isValidCategory,
       isValidName,
 } = require('../helpers/db-validators');
+const { validateAdminRole } = require('./validate-role');
 
 const validateCategoryPost = [
       validarJWT,
@@ -33,13 +34,13 @@ const validateCategoryGetOne = [
 
 const validateCategoryDelete = [
       validarJWT,
+      validateAdminRole,
       check('id', 'Category id is required')
             .isMongoId()
             .custom(isValidCategory),
       validateRequest,
 ];
 
-//TODO
 const validateCategoryPut = [
       validarJWT,
       check('id', 'Category id is required')

@@ -91,7 +91,6 @@ const deleteCategory = async (req, res = response) => {
       }
 };
 
-//TODO
 const putCategory = async (req, res = response) => {
       const { id } = req.params;
       const name = req.body.name.toUpperCase();

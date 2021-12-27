@@ -22,6 +22,8 @@ const categorySchema = Schema({
 categorySchema.methods.toJSON = function () {
       const { __v, _id, ...category } = this.toObject();
       category.id = _id;
+      category.user.uid = category.user._id;
+      delete category.user._id;
       return category;
 };
 
