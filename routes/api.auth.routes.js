@@ -7,10 +7,7 @@ const {
 
 const router = Router();
 
-router.get('/');
 router.post('/login', validateLogin, login);
 router.post('/google', validateGoogleLogin, googleSignIn);
-router.put('/');
-router.delete('/');
 
 module.exports = router;

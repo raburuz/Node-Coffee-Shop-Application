@@ -1,3 +1,4 @@
+const { Category } = require('../models');
 const Role = require('../models/role');
 const User = require('../models/user');
 
@@ -18,7 +19,25 @@ const isValidId = async (_id = '') => {
       const existId = await User.findById(_id);
 
       if (!existId) {
-            throw new Error('Not a valid Id ff');
+            throw new Error('Not a valid Id');
+      }
+};
+
+const isValidCategory = async (_id = '') => {
+      const existId = await Category.findById(_id);
+
+      if (!existId) {
+            throw new Error('Not a valid Id');
+      }
+};
+
+const isValidName = async (name = '') => {
+      const nameToUpper = name.toUpperCase();
+
+      const nameExist = await Category.findOne({ name: nameToUpper });
+
+      if (nameExist) {
+            throw new Error('Name is already taken ');
       }
 };
 
@@ -26,4 +45,6 @@ module.exports = {
       isValidRole,
       isUniqueEmail,
       isValidId,
+      isValidCategory,
+      isValidName,
 };

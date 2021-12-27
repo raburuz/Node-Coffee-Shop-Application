@@ -44,7 +44,7 @@ const validateUserPost = [
 ];
 
 const validateUserPut = [
-      check('id', 'Not a valid Id mm').isMongoId().custom(isValidId),
+      check('id', 'Not a valid Id').isMongoId().custom(isValidId),
       check('name', 'Name is required').trim().not().isEmpty(),
       check('email', 'Not a valid email address').normalizeEmail().isEmail(),
       check('role').custom(isValidRole),
