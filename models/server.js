@@ -47,7 +47,7 @@ class Server {
                   require('../routes/api.category.routes')
             );
             this.app.use(
-                  this.paths.category,
+                  this.paths.product,
                   require('../routes/api.product.routes')
             );
       }

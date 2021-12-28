@@ -7,13 +7,13 @@ const populate = {
 };
 
 const getCategories = async (req, res = response) => {
-      const { limit = 5 } = req.params;
+      const { limit = 5 } = req.query;
       const query = { condition: true };
 
       try {
             const [total, categories] = await Promise.all([
                   Category.countDocuments(query),
-                  Category.find(query).limit(limit).populate(populate),
+                  Category.find(query).limit(Number(limit)).populate(populate),
             ]);
             res.status(200).json({
                   total,

@@ -49,6 +49,14 @@ const isValidProduct = async (id = '') => {
       }
 };
 
+const isValidNameProduct = async (name = '') => {
+      name = name.toUpperCase();
+      const existName = await Product.findOne({ name });
+      if (existName) {
+            throw new Error('Name is already taken');
+      }
+};
+
 module.exports = {
       isValidRole,
       isUniqueEmail,
@@ -56,4 +64,5 @@ module.exports = {
       isValidCategory,
       isValidName,
       isValidProduct,
+      isValidNameProduct,
 };

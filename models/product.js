@@ -9,7 +9,7 @@ const productSchema = Schema({
             unique: true,
       },
       price: {
-            type: number,
+            type: Number,
             default: 0,
       },
       condition: {
@@ -29,6 +29,7 @@ const productSchema = Schema({
       },
       description: {
             type: String,
+            default: '',
       },
       available: {
             type: Boolean,

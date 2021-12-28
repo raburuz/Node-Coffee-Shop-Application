@@ -14,7 +14,7 @@ const validarJWT = async (req, res = response, next) => {
             const { uid } = jwt.verify(token, process.env.PRIVATEKEYJWT);
             const userAuthenticated = await User.findById(uid);
             if (!userAuthenticated) {
-                  return res.status(400).json({
+                  return res.status(401).json({
                         msg: `'Must Be Authenticated `,
                   });
             }
