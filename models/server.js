@@ -11,6 +11,7 @@ class Server {
                   user: '/api/user',
                   auth: '/api/auth',
                   category: '/api/category',
+                  product: '/api/product',
             };
 
             //Connect DB
@@ -44,6 +45,10 @@ class Server {
             this.app.use(
                   this.paths.category,
                   require('../routes/api.category.routes')
+            );
+            this.app.use(
+                  this.paths.category,
+                  require('../routes/api.product.routes')
             );
       }
 

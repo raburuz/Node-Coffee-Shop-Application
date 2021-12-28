@@ -71,9 +71,13 @@ const deleteCategory = async (req, res = response) => {
       const { id } = req.params;
 
       try {
-            const category = await Category.findByIdAndUpdate(id, {
-                  condition: false,
-            });
+            const category = await Category.findByIdAndUpdate(
+                  id,
+                  {
+                        condition: false,
+                  },
+                  { new: true }
+            );
 
             const { condition } = category;
             if (!condition) {
@@ -96,7 +100,11 @@ const putCategory = async (req, res = response) => {
       const name = req.body.name.toUpperCase();
 
       try {
-            const category = await Category.findByIdAndUpdate(id, { name });
+            const category = await Category.findByIdAndUpdate(
+                  id,
+                  { name },
+                  { new: true }
+            );
 
             const { condition } = category;
             if (!condition) {

@@ -16,10 +16,10 @@ const {
 
 const router = Router();
 
-router.get('/', validateCategoryGet, getCategories); //ok
-router.get('/:id', validateCategoryGetOne, getCategory); //ok
+router.get('/', validateCategoryGet, getCategories);
+router.get('/:id', validateCategoryGetOne, getCategory);
 router.put('/:id', validateCategoryPut, putCategory);
-router.post('/', validateCategoryPost, postCategories); //ok
-router.delete('/:id', validateCategoryDelete, deleteCategory); //ok
+router.post('/', validateCategoryPost, postCategories);
+router.delete('/:id', validateCategoryDelete, deleteCategory);
 
 module.exports = router;
