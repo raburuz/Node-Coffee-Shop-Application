@@ -2,7 +2,6 @@ const Product = require('../models/product');
 
 const getProducts = async (req, res) => {
       const { limit = 5 } = req.query;
-      console.log(limit);
 
       const query = { condition: true };
       const populateUser = {
@@ -34,17 +33,21 @@ const getProducts = async (req, res) => {
 const getProduct = async (req, res) => {
       const { id } = req.params;
       const query = { condition: true };
-      const populate = {
-            path: 'user category',
+      const populateUser = {
+            path: 'user',
             select: 'name email',
+      };
+      const populateCategory = {
+            path: 'category',
+            select: 'name',
       };
 
       try {
-            const product = await Product.findById(id, query).populate(
-                  populate
-            );
+            const product = await Product.findById(id)
+                  .populate(populateUser)
+                  .populate(populateCategory);
 
-            res.status(200).json(product);
+            res.status(200).json({ product });
       } catch (error) {
             res.status(500).json({
                   msg: 'Something has gone wrong! Please notify your administrator.',

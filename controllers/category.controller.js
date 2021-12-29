@@ -30,7 +30,7 @@ const getCategory = async (req, res = response) => {
       const { id } = req.params;
 
       try {
-            const category = await Category.findOne({ id }).populate(populate);
+            const category = await Category.findById(id).populate(populate);
             res.status(200).json({
                   category,
             });

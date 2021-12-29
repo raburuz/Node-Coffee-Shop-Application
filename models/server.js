@@ -12,6 +12,7 @@ class Server {
                   auth: '/api/auth',
                   category: '/api/category',
                   product: '/api/product',
+                  search: '/api/search',
             };
 
             //Connect DB
@@ -49,6 +50,11 @@ class Server {
             this.app.use(
                   this.paths.product,
                   require('../routes/api.product.routes')
+            );
+
+            this.app.use(
+                  this.paths.search,
+                  require('../routes/api.search.routes')
             );
       }
 
