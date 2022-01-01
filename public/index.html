@@ -31,6 +31,33 @@
             ></div>
 
             <button id="google_signout">Signout</button>
+
+            <div style="margin-top: 60px">
+                  <form id="myform">
+                        <input type="file" name="file" id="file" />
+                        <input type="submit" value="Upload File" />
+                  </form>
+            </div>
+
+            <script>
+                  const form = document.getElementById('myform');
+
+                  form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const file = document.getElementById('file');
+                        const formData = new FormData();
+                        formData.append('file', file.files[0]);
+                        fetch('http://localhost:3001/api/upload', {
+                              method: 'POST',
+                              body: formData,
+                        })
+                              .then((resp) => resp.json())
+                              .then((resp) => {
+                                    console.log('success');
+                              })
+                              .catch(console.warn);
+                  });
+            </script>
             <script
                   src="https://accounts.google.com/gsi/client"
                   async
